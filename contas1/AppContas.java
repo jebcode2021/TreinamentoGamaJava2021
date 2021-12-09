@@ -1,21 +1,21 @@
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 import dados.GerenciaContas;
-import modelo.Conta;
-import modelo.ContaCorrente;
-import modelo.ContaEspecial;
-import modelo.ContaPoupanca;
+//import modelo.Conta;
+//import modelo.ContaCorrente;
+//import modelo.ContaEspecial;
+//import modelo.ContaPoupanca;
 
 public class AppContas {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         int opcao = 0, numeroConta;
-        double limite;
+        double limite, valor;
 
         // ContaCorrente cc = null;
-        ContaEspecial ce = null;
-        ContaPoupanca cp = null;
+        //ContaEspecial ce = null;
+        //ContaPoupanca cp = null;
 
         GerenciaContas contas = new GerenciaContas();
 
@@ -54,7 +54,16 @@ public class AppContas {
                     break;
 
                 case 4:
+                    System.out.println("informe o número da conta:");
+                    numeroConta = teclado.nextInt();
+                    System.out.println("Informe o valor");
+                    valor = teclado.nextDouble();
 
+                    if(contas.deposito(numeroConta, valor)) {
+                        System.out.println("Deposito realizado.");
+                    } else {
+                        System.out.println("Falha na operação");
+                    }
                     break;
 
                 case 5:

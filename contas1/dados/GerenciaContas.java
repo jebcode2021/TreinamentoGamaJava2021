@@ -44,4 +44,13 @@ public class GerenciaContas {
         return "Conta não encontrada.";
     }
 
+    public Boolean deposito(int numeroConta, double valor) {
+        for (Conta  conta : contas) {
+            if (conta.getNumero() == numeroConta) {
+                return conta.deposito(valor);
+            }
+        }
+        return false; // conta não encontrada
+    }
+
 }
