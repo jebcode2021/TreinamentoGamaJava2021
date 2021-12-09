@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import dados.GerenciaContas;
 import modelo.Conta;
 import modelo.ContaCorrente;
 import modelo.ContaEspecial;
@@ -12,11 +13,11 @@ public class AppContas {
         int opcao = 0, numeroConta;
         double limite;
 
-        ContaCorrente cc = null;
+        // ContaCorrente cc = null;
         ContaEspecial ce = null;
         ContaPoupanca cp = null;
 
-        ArrayList<Conta> contas = new ArrayList<>();
+        GerenciaContas contas = new GerenciaContas();
 
         while (opcao != 7) {
 
@@ -35,8 +36,7 @@ public class AppContas {
                 case 1:
                     System.out.println("Informe o número da conta:");
                     numeroConta = teclado.nextInt();
-                    cc = new ContaCorrente(numeroConta);
-                    contas.add(cc);
+                    contas.novaContaCorrente(numeroConta);
                     break; // interromper
 
                 case 2:
@@ -44,15 +44,13 @@ public class AppContas {
                     numeroConta = teclado.nextInt();
                     System.out.println("Informe o valor do limite:");
                     limite = teclado.nextDouble();
-                    ce = new ContaEspecial(numeroConta, limite);
-                    contas.add(ce);
+                    contas.novaContaEspecial(numeroConta, limite);
                     break;
 
                 case 3:
                     System.out.println("Informe o número da conta:");
                     numeroConta = teclado.nextInt();
-                    cp = new ContaPoupanca(numeroConta);
-                    contas.add(cp);
+                    contas.novaContaPoupanca(numeroConta);
                     break;
 
                 case 4:
@@ -66,22 +64,7 @@ public class AppContas {
                 case 6:
                     System.out.println("Informe o número da conta:");
                     numeroConta = teclado.nextInt();
-
-                    // for (int i = 0; i < contas.size(); i++) {
-                    //     if(contas.get(i).getNumero() == numeroConta) {
-                    //         System.out.println(contas.get(i));
-                    //         break; // interrompe o for
-                    //     }
-                    // }
-
-                    //foreach = para cada valor da estrutura
-                    for (Conta conta : contas) { // Para cada "conta" que está na estrutura "contas"
-                        if(conta.getNumero() == numeroConta) {
-                            System.out.println(conta);
-                            break;
-                        }
-                    }
-                    
+                    System.out.println(contas.getSaldo(numeroConta));
                     break;
 
                 case 7:
